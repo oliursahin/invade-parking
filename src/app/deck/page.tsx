@@ -13,17 +13,26 @@ export default function DeckPage() {
 
     const opt = {
       margin: [10, 10],
-      filename: 'zerotrail-overview.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
+      filename: 'zerotrail-security.pdf',
+      image: { 
+        type: 'jpeg', 
+        quality: 1.0
+      },
       html2canvas: { 
-        scale: 2,
+        scale: 3,
         useCORS: true,
-        letterRendering: true
+        letterRendering: true,
+        logging: true,
+        dpi: 300,
+        windowWidth: 1200,
+        backgroundColor: '#ffffff'
       },
       jsPDF: { 
         unit: 'mm', 
         format: 'a4', 
-        orientation: 'portrait' 
+        orientation: 'portrait',
+        compress: false,
+        precision: 16
       }
     };
 
@@ -86,7 +95,10 @@ export default function DeckPage() {
         minHeight: '100vh', 
         background: '#ffffff', 
         color: '#1a202c',
-        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif'
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
+        WebkitFontSmoothing: 'antialiased',
+        MozOsxFontSmoothing: 'grayscale',
+        textRendering: 'optimizeLegibility'
       }}>
         {/* Hero Section */}
         <div style={{ 
@@ -376,7 +388,10 @@ export default function DeckPage() {
           padding: '40px 24px',
           background: '#f9fafb',
           borderRadius: '16px',
-          border: '1px solid #e5e7eb'
+          border: '1px solid #e5e7eb',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+          WebkitPrintColorAdjust: 'exact',
+          printColorAdjust: 'exact'
         }}>
           <div style={{
             display: 'grid',
@@ -530,7 +545,9 @@ export default function DeckPage() {
           maxWidth: '1200px', 
           margin: '80px auto 0', 
           padding: '0 24px 16px',
-          pageBreakInside: 'avoid'
+          pageBreakInside: 'avoid',
+          WebkitPrintColorAdjust: 'exact',
+          printColorAdjust: 'exact'
         }}>
           {/* Section Header */}
           <div style={{ 
@@ -636,8 +653,10 @@ export default function DeckPage() {
                 border: '1px solid #e5e7eb',
                 borderRadius: '8px',
                 overflow: 'hidden',
-                boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.05)',
-                maxWidth: '360px'
+                boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                maxWidth: '360px',
+                WebkitPrintColorAdjust: 'exact',
+                printColorAdjust: 'exact'
               }}>
                 <div style={{ padding: '8px' }}>
                   {featureNum === 1 && (
