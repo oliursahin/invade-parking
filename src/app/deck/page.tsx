@@ -634,12 +634,13 @@ export default function DeckPage() {
                    'Automate secure development'}
                 </h3>
                 <p style={{ 
-                  fontSize: '0.75rem',
-                  lineHeight: '1.4',
+                  fontSize: '1rem',
+                  lineHeight: '1.5',
                   color: '#6b7280',
                   fontFamily: 'Inter, sans-serif',
                   maxWidth: '380px',
-                  margin: 0
+                  margin: 0,
+                  fontWeight: '400'
                 }}>
                   {featureNum === 1 ? 'Define your custom risk profile and identify risky changes before they happen, ensuring no critical changes go unnoticed during development.' :
                    featureNum === 2 ? 'Instantly analyze every product change, gather planning information from multiple sources, and automate threat assessment with full context.' :
