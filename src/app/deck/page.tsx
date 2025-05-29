@@ -942,7 +942,7 @@ export default function DeckPage() {
                           margin: 0,
                           opacity: '0.8'
                         }}>
-                          Implement strict file type validation for all contents of the ZIP file. Use a secure extraction library that doesn't automatically
+                          Implement strict file type validation for all contents of the ZIP file. Use a secure extraction library that doesn&apos;t automatically
                         </p>
                       </div>
                     </div>
