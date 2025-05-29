@@ -13,7 +13,7 @@ export default function Home() {
           <a href="mailto:founders@invade.dev" className="text-[var(--link-color)] hover:text-[var(--link-hover-color)] font-medium">
             say hi
           </a>
-          {' '}to my creators if you can't wait to see what's been cooked.
+          {' '}to my creators if you can&apos;t wait to see what&apos;s been cooked.
         </p>
       </div>
     </main>
