@@ -2,41 +2,46 @@
 
 import React, { useRef } from 'react';
 import { SiGoogledrive, SiGooglesheets, SiConfluence, SiSlack, SiNotion, SiLinear, SiJira, SiGoogledocs } from 'react-icons/si';
-import html2pdf from 'html2pdf.js';
 
 export default function DeckPage() {
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const handleDownloadPDF = () => {
+  const handleDownloadPDF = async () => {
     const element = contentRef.current;
     if (!element) return;
 
-    const opt = {
-      margin: [10, 10],
-      filename: 'zerotrail-security.pdf',
-      image: { 
-        type: 'jpeg', 
-        quality: 1.0
-      },
-      html2canvas: { 
-        scale: 3,
-        useCORS: true,
-        letterRendering: true,
-        logging: true,
-        dpi: 300,
-        windowWidth: 1200,
-        backgroundColor: '#ffffff'
-      },
-      jsPDF: { 
-        unit: 'mm', 
-        format: 'a4', 
-        orientation: 'portrait',
-        compress: false,
-        precision: 16
-      }
-    };
+    try {
+      const html2pdf = (await import('html2pdf.js')).default;
+      
+      const opt = {
+        margin: [10, 10],
+        filename: 'zerotrail-security.pdf',
+        image: { 
+          type: 'jpeg', 
+          quality: 1.0
+        },
+        html2canvas: { 
+          scale: 3,
+          useCORS: true,
+          letterRendering: true,
+          logging: true,
+          dpi: 300,
+          windowWidth: 1200,
+          backgroundColor: '#ffffff'
+        },
+        jsPDF: { 
+          unit: 'mm', 
+          format: 'a4', 
+          orientation: 'portrait',
+          compress: false,
+          precision: 16
+        }
+      };
 
-    html2pdf().set(opt).from(element).save();
+      html2pdf().set(opt).from(element).save();
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    }
   };
 
   return (
