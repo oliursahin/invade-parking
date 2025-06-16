@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { SiGoogledocs, SiLinear, SiNotion } from 'react-icons/si';
+import { SiLinear, SiNotion } from 'react-icons/si';
 import { SiJira, SiGithub, SiSlack, SiBitbucket } from 'react-icons/si';
 import { VscGitPullRequest } from 'react-icons/vsc';
 import { SiSnyk, SiCheckmarx } from 'react-icons/si';
