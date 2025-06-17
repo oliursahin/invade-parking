@@ -897,7 +897,7 @@ zerotrail integrates into existing product development stack as an ai security e
                     </div>
                   </div>
                   <div style={{
-                    background: '#23272F',
+                    background: '#060707',
                     borderRadius: '8px',
                     padding: '8px',
                     marginTop: '8px'
@@ -991,7 +991,7 @@ zerotrail integrates into existing product development stack as an ai security e
                 borderRadius: '6px',
                 padding: '16px',
                 marginBottom: '16px',
-                minHeight: '180px'
+                height: '200px'
               }}>
                 {/* Zerotrail + GitHub Connection */}
                 <div style={{
@@ -1170,7 +1170,7 @@ zerotrail integrates into existing product development stack as an ai security e
                 borderRadius: '6px',
                 padding: '16px',
                 marginBottom: '16px',
-                minHeight: '180px'
+                height: '200px'
               }}>
                 {/* Vulnerability Card */}
                 <div style={{
@@ -1314,7 +1314,7 @@ zerotrail integrates into existing product development stack as an ai security e
                 borderRadius: '6px',
                 padding: '16px',
                 marginBottom: '16px',
-                minHeight: '180px'
+                height: '200px'
               }}>
                 {/* Pull Request Header */}
                 <div style={{
