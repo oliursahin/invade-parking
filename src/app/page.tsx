@@ -4,23 +4,7 @@ import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { useRef, useEffect, useState } from 'react';
 
-function useScrollFadeIn(): [React.RefObject<HTMLDivElement | null>, boolean] {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 80) {
-        setVisible(true);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  return [ref, visible];
-}
+
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
@@ -98,7 +82,7 @@ export default function Home() {
               textAlign: 'left',
               lineHeight: 1.6,
             }}>
-              Integrates into your existing product development stack. Zerotrail detects, analyzes.
+              reviews every pull request, finds real vulnerabilities, produces poc exploits, and writes patches — automatically.
             </div>
             <div style={{ 
               display: 'flex', 
@@ -183,10 +167,10 @@ function ScrollFeatureSection() {
       title: 'zerotrail understands your codebase and how your application works.',
     },
     {
-      title: 'finds complex, multistep vulnerabilities and tests your code like an attacker.',
+      title: 'finds complex, multi-step vulnerabilities and tests your code like an attacker.',
     },
     {
-      title: 'reviews every PR.',
+      title: 'reviews every changes in your vibe codes.',
     },
     {
       title: 'generates patch without any human intervention.',
@@ -211,7 +195,7 @@ function ScrollFeatureSection() {
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [features.length]);
 
   return (
     <section
