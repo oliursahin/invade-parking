@@ -154,7 +154,7 @@ export default function ZerotrailPage() {
           maxWidth: '700px',
           margin: isMobile ? '0 auto 32px' : '0 auto 48px'
         }}>
-zerotrail integrates into existing product development stack as an ai security engineer. It detects, analyzes, and suggests mitigations for vulnerabilities at both the code and design levels — before they reach production.
+zerotrail detects, analyzes, and suggests mitigations for vulnerabilities at both the code and design levels — before they reach production.
         </p>
 
         {/* CTA Buttons */}
@@ -957,7 +957,7 @@ zerotrail integrates into existing product development stack as an ai security e
             maxWidth: '900px',
             margin: '0 auto 8px'
           }}>
-            AI security engineer that never sleeps
+            AI security engineer that never sleeps.
           </h2>
           </div>
         {/* Minimal Three-Column Feature Section (AI Never Sleeps) */}
