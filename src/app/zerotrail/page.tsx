@@ -494,7 +494,7 @@ zerotrail integrates into existing product development stack as an ai security e
           <div style={{ minWidth: isMobile ? 280 : 320, maxWidth: isMobile ? 380 : 420, flex: 1, display: 'flex', justifyContent: 'center' }}>
             {activeFeature === 0 && (
               <div style={{
-                background: '#101214',
+                background: '#060707',
                 border: '1px solid #23272F',
                 borderRadius: '12px',
                 boxShadow: 'none',
@@ -514,7 +514,7 @@ zerotrail integrates into existing product development stack as an ai security e
                   top: '-10px',
                   left: '20px',
                   right: '20px',
-                  background: '#181A20',
+                  background: '#060707',
                   borderRadius: '8px',
                   border: '1px solid #23272F',
                   padding: '8px',
@@ -592,7 +592,7 @@ zerotrail integrates into existing product development stack as an ai security e
                 {/* Main Card (Jira, dark) */}
                 <div style={{
                   position: 'relative',
-                  background: '#181A20',
+                  background: '#060707',
                   borderRadius: '8px',
                   border: '1px solid #23272F',
                   padding: '8px',
@@ -690,7 +690,7 @@ zerotrail integrates into existing product development stack as an ai security e
             )}
             {activeFeature === 1 && (
               <div style={{
-                background: '#181A20',
+                background: '#060707',
                 borderRadius: '16px',
                 border: '1.5px solid #23272F',
                 padding: '18px 16px 14px 16px',
@@ -786,7 +786,7 @@ zerotrail integrates into existing product development stack as an ai security e
                   </span>
                 </div>
                 <div style={{
-                  background: '#181A20',
+                  background: '#060707',
                   padding: '8px 12px',
                   borderRadius: '6px',
                   border: '1px solid #23272F',
@@ -819,7 +819,7 @@ zerotrail integrates into existing product development stack as an ai security e
             )}
             {activeFeature === 2 && (
               <div style={{
-                background: '#101214',
+                background: '#060707',
                 border: '1px solid #23272F',
                 borderRadius: '12px',
                 boxShadow: 'none',
@@ -840,7 +840,7 @@ zerotrail integrates into existing product development stack as an ai security e
                   right: '12px',
                   width: '32px',
                   height: '32px',
-                  background: '#181A20',
+                  background: '#060707',
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
@@ -852,7 +852,7 @@ zerotrail integrates into existing product development stack as an ai security e
                   <SiNotion size={16} color="#bdbdbd" />
                 </div>
                 <div style={{
-                  background: '#181A20',
+                  background: '#060707',
                   borderRadius: '8px',
                   border: '1px solid #23272F',
                   padding: '8px',
@@ -972,7 +972,7 @@ zerotrail integrates into existing product development stack as an ai security e
             gap: isMobile ? '40px' : '32px',
             maxWidth: isMobile ? '100%' : '1200px',
             margin: '0 auto',
-            alignItems: 'flex-start',
+            alignItems: 'stretch',
             padding: isMobile ? '0 16px' : '0 24px'
           }}>
                         {/* Card 1: Connect Zerotrail to GitHub */}
