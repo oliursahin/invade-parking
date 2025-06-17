@@ -5,8 +5,13 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'zerotrail',
-  description: 'Security by design',
+  title: 'zerotrail - AI Security Engineer',
+  description: 'AI security engineer that never sleeps. Reviews every pull request, finds real vulnerabilities, generates PoCs, and writes patches — automatically.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({

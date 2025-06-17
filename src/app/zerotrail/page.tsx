@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SiLinear, SiNotion } from 'react-icons/si';
 import { SiJira, SiGithub, SiSlack, SiBitbucket } from 'react-icons/si';
 import { VscGitPullRequest } from 'react-icons/vsc';
@@ -9,6 +9,17 @@ import { FaBug } from 'react-icons/fa';
 
 export default function ZerotrailPage() {
   const [activeFeature, setActiveFeature] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <>
@@ -34,8 +45,8 @@ export default function ZerotrailPage() {
         right: 0,
         backgroundColor: '#060707',
         zIndex: 50,
-        padding: '0 24px',
-        height: '64px',
+        padding: isMobile ? '0 16px' : '0 24px',
+        height: isMobile ? '56px' : '64px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between'
@@ -50,17 +61,17 @@ export default function ZerotrailPage() {
           position: 'absolute',
           left: '50%',
           transform: 'translateX(-50%)',
-          marginTop: '8px'
+          marginTop: isMobile ? '4px' : '8px'
         }}>
           <div style={{
-            width: '28px',
-            height: '28px',
+            width: isMobile ? '24px' : '28px',
+            height: isMobile ? '24px' : '28px',
             background: '#ffffff',
             borderRadius: '6px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '0.75rem',
+            fontSize: isMobile ? '0.65rem' : '0.75rem',
             color: '#000000',
             fontWeight: '600'
           }}>
@@ -78,8 +89,8 @@ export default function ZerotrailPage() {
             color: '#ffffff',
             border: '1px solid #374151',
             borderRadius: '8px',
-            padding: '8px 16px',
-            fontSize: '0.875rem',
+            padding: isMobile ? '6px 12px' : '8px 16px',
+            fontSize: isMobile ? '0.8rem' : '0.875rem',
             fontWeight: '500',
             cursor: 'pointer'
           }}>
@@ -90,10 +101,10 @@ export default function ZerotrailPage() {
 
       {/* Hero Section */}
       <section style={{
-        paddingTop: '120px',
-        paddingBottom: '80px',
-        paddingLeft: '24px',
-        paddingRight: '24px',
+        paddingTop: isMobile ? '80px' : '120px',
+        paddingBottom: isMobile ? '40px' : '80px',
+        paddingLeft: isMobile ? '16px' : '24px',
+        paddingRight: isMobile ? '16px' : '24px',
         textAlign: 'center',
         maxWidth: '1200px',
         margin: '0 auto',
@@ -108,60 +119,60 @@ export default function ZerotrailPage() {
       }}>
         {/* Main Headline */}
         <h1 style={{
-          fontSize: '1.5rem',
+          fontSize: isMobile ? '1.25rem' : '1.5rem',
           fontWeight: '700',
           lineHeight: '1.1',
           color: '#ffffff',
           letterSpacing: '-0.025em',
-          marginBottom: '24px',
+          marginBottom: isMobile ? '16px' : '24px',
           maxWidth: '900px',
-          margin: '0 auto 24px'
+          margin: isMobile ? '0 auto 16px' : '0 auto 24px'
         }}>
           Autonomous Developer Security
         </h1>
         
         <h1 style={{
-          fontSize: '1.5rem',
+          fontSize: isMobile ? '1.25rem' : '1.5rem',
           fontWeight: '700',
           lineHeight: '1.1',
           color: '#9ca3af',
           letterSpacing: '-0.025em',
-          marginBottom: '32px',
+          marginBottom: isMobile ? '24px' : '32px',
           maxWidth: '900px',
-          margin: '0 auto 32px'
+          margin: isMobile ? '0 auto 24px' : '0 auto 32px'
         }}>
           for Modern Teams
         </h1>
 
         {/* Subtitle */}
         <p style={{
-          fontSize: '0.875rem',
+          fontSize: isMobile ? '0.8rem' : '0.875rem',
           lineHeight: '1.6',
           color: '#9ca3af',
           fontWeight: '400',
-          marginBottom: '48px',
+          marginBottom: isMobile ? '32px' : '48px',
           maxWidth: '700px',
-          margin: '0 auto 48px'
+          margin: isMobile ? '0 auto 32px' : '0 auto 48px'
         }}>
-          Ship secure code faster with AI-powered security analysis that integrates seamlessly into your development workflow. Catch vulnerabilities before they reach production.
+zerotrail integrates into existing product development stack as an ai security engineer. It detects, analyzes, and suggests mitigations for vulnerabilities at both the code and design levels — before they reach production.
         </p>
 
         {/* CTA Buttons */}
         <div style={{
           display: 'flex',
-          gap: '16px',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: isMobile ? '12px' : '16px',
           justifyContent: 'center',
           alignItems: 'center',
-          flexWrap: 'wrap',
-          marginBottom: '64px'
+          marginBottom: isMobile ? '20px' : '32px'
         }}>
           <button style={{
             backgroundColor: '#ffffff',
             color: '#000000',
             border: 'none',
             borderRadius: '12px',
-            padding: '12px 24px',
-            fontSize: '0.875rem',
+            padding: isMobile ? '10px 20px' : '12px 24px',
+            fontSize: isMobile ? '0.8rem' : '0.875rem',
             fontWeight: '600',
             cursor: 'pointer',
             display: 'flex',
@@ -180,8 +191,8 @@ export default function ZerotrailPage() {
             color: '#9ca3af',
             border: '1px solid #333333',
             borderRadius: '12px',
-            padding: '12px 24px',
-            fontSize: '0.875rem',
+            padding: isMobile ? '10px 20px' : '12px 24px',
+            fontSize: isMobile ? '0.8rem' : '0.875rem',
             fontWeight: '600',
             cursor: 'pointer',
             display: 'flex',
@@ -198,41 +209,39 @@ export default function ZerotrailPage() {
 
         {/* Free Trial Text */}
         <p style={{
-          fontSize: '0.875rem',
+          fontSize: isMobile ? '0.75rem' : '0.8rem',
           color: '#6b7280',
           fontWeight: '400',
-          textAlign: 'center',
-          marginBottom: '0px'
+          marginBottom: isMobile ? '8px' : '12px'
         }}>
-          14 days free no creds required
+          Start free trial — no credit card required
         </p>
         </div>
       </section>
 
-      {/* Technical Architecture Diagram - MINIMAL BLUEPRINT STYLE */}
+      {/* Workflow Diagram - Hide on mobile */}
+      {!isMobile && (
       <section style={{
-        padding: '0',
-        margin: '0 auto 32px',
-        maxWidth: '950px',
-        minHeight: '340px',
+        paddingTop: '0px',
+        paddingBottom: '20px',
+        paddingLeft: '24px',
+        paddingRight: '24px',
+        textAlign: 'center',
+        maxWidth: '1000px',
+        margin: '0 auto',
         position: 'relative',
-        background: '#060707',
-        borderRadius: '12px',
-        boxShadow: '0 2px 18px 0 #000a',
-        overflow: 'hidden',
+        height: '280px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
       }}>
-        {/* Faint grid background */}
         <div style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 0,
-          backgroundImage: 'linear-gradient(to right, #23272F 1px, transparent 1px), linear-gradient(to bottom, #23272F 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-          opacity: 0.13,
-          pointerEvents: 'none',
-        }} />
-        {/* SVG lines/arrows - minimal, blueprint style */}
-        <svg width="100%" height="340" viewBox="0 0 950 340" style={{ position: 'absolute', left: 0, top: 0, zIndex: 1, pointerEvents: 'none' }}>
+          display: 'flex', 
+          justifyContent: 'center', 
+          width: '100%',
+          position: 'relative'
+        }}>
+          <svg width="960" height="280" viewBox="0 0 960 280" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ maxWidth: '100%', height: 'auto' }}>
           {/* Ingest to Zero Trust Engine - horizontal, no arrowhead */}
           <polyline points="200,90 420,90" stroke="#2d323c" strokeWidth="1.5" fill="none" strokeDasharray="4,4" />
           {/* Scan to Zero Trust Engine - horizontal, no arrowhead */}
@@ -250,7 +259,7 @@ export default function ZerotrailPage() {
           </defs>
         </svg>
         {/* Ingest Product Spec Node */}
-        <div style={{ position: 'absolute', left: 60, top: 60, width: 140, zIndex: 2 }}>
+        <div style={{ position: 'absolute', left: 60, top: 40, width: 140, zIndex: 2 }}>
           <div style={{
             border: '1px solid #23272F',
             borderRadius: '8px',
@@ -275,7 +284,7 @@ export default function ZerotrailPage() {
           </div>
         </div>
         {/* Scan code on every PR Node */}
-        <div style={{ position: 'absolute', left: 60, top: 180, width: 140, zIndex: 2 }}>
+        <div style={{ position: 'absolute', left: 60, top: 160, width: 140, zIndex: 2 }}>
           <div style={{
             border: '1px solid #23272F',
             borderRadius: '8px',
@@ -323,7 +332,7 @@ export default function ZerotrailPage() {
           </div>
         </div>
         {/* Automated Patch Node - GitHub PR Card Style */}
-        <div style={{ position: 'absolute', left: 750, top: 70, width: 180, zIndex: 2 }}>
+        <div style={{ position: 'absolute', left: 750, top: 50, width: 180, zIndex: 2 }}>
           <div style={{
             border: '1px solid #23272F',
             borderRadius: '8px',
@@ -372,7 +381,7 @@ export default function ZerotrailPage() {
           </div>
         </div>
         {/* Alerts Node */}
-        <div style={{ position: 'absolute', left: 720, top: 180, width: 100, zIndex: 2 }}>
+        <div style={{ position: 'absolute', left: 720, top: 160, width: 100, zIndex: 2 }}>
           <div style={{
             border: '1px solid #23272F',
             borderRadius: '8px',
@@ -393,34 +402,35 @@ export default function ZerotrailPage() {
             <div style={{ fontFamily: 'Menlo, monospace', fontSize: '0.7rem', color: '#bdbdbd', letterSpacing: '0.04em', fontWeight: 400, opacity: 0.85 }}>
               High risk: API key exposed
             </div>
+            </div>
           </div>
         </div>
       </section>
-
+      )}
 
       {/* Features Section - Modernized Card UI */}
       <section style={{
-        paddingLeft: '24px',
-        paddingRight: '24px',
-        paddingBottom: '80px',
-        paddingTop: '80px',
+        paddingLeft: isMobile ? '16px' : '24px',
+        paddingRight: isMobile ? '16px' : '24px',
+        paddingBottom: isMobile ? '60px' : '80px',
+        paddingTop: isMobile ? '60px' : '80px',
         maxWidth: '1200px',
         margin: '0 auto'
       }}>
         {/* Section Headline */}
         <div style={{
           textAlign: 'center',
-          marginBottom: '64px'
+          marginBottom: isMobile ? '40px' : '64px'
         }}>
           <h2 style={{
-            fontSize: '1.8rem',
+            fontSize: isMobile ? '1.5rem' : '1.8rem',
             fontWeight: 400,
             lineHeight: '1.1',
             color: '#ffffff',
             letterSpacing: '-0.025em',
-            marginBottom: '24px',
+            marginBottom: isMobile ? '16px' : '24px',
             maxWidth: '900px',
-            margin: '0 auto 24px'
+            margin: isMobile ? '0 auto 16px' : '0 auto 24px'
           }}>
             Catch Security Flaws Before Writing a Single Line of Code.
           </h2>
@@ -441,39 +451,39 @@ export default function ZerotrailPage() {
         {/* Combined Features Section - Minimal, Interactive */}
         <section style={{
           display: 'flex',
-          flexDirection: 'row',
-          gap: '64px',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: isMobile ? '32px' : '64px',
           alignItems: 'flex-start',
           justifyContent: 'center',
           marginBottom: '40px',
         }}>
           {/* Left: Feature Titles */}
-          <div style={{ minWidth: 260, display: 'flex', flexDirection: 'column', gap: 0 }}>
+          <div style={{ minWidth: isMobile ? 'auto' : 260, display: 'flex', flexDirection: 'column', gap: 0 }}>
             {['Identify risky changes', 'Analyze every change', 'Automate secure development'].map((title, idx) => (
               <div
                 key={title}
                 onClick={() => setActiveFeature(idx)}
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  cursor: 'pointer',
-                  padding: '18px 0 18px 0',
+                  padding: isMobile ? '12px 0 12px 0' : '18px 0 18px 0',
                   fontFamily: 'Inter, sans-serif',
-                  fontSize: '1.18rem',
+                  fontSize: isMobile ? '1rem' : '1.18rem',
                   color: activeFeature === idx ? '#fff' : '#6b7280',
                   fontWeight: 500,
                   background: 'none',
                   border: 'none',
                   outline: 'none',
                   transition: 'color 0.18s',
+                  display: 'flex',
+                  alignItems: 'center',
+                  cursor: 'pointer'
                 }}
               >
                 <div style={{
                   width: 4,
-                  height: 28,
+                  height: isMobile ? 20 : 28,
                   borderRadius: 6,
                   background: activeFeature === idx ? '#22c55e' : '#23272F',
-                  marginRight: 18,
+                  marginRight: isMobile ? 12 : 18,
                   transition: 'background 0.18s',
                 }} />
                 {title}
@@ -481,7 +491,7 @@ export default function ZerotrailPage() {
             ))}
           </div>
           {/* Right: Dynamic Feature Card */}
-          <div style={{ minWidth: 320, maxWidth: 420, flex: 1, display: 'flex', justifyContent: 'center' }}>
+          <div style={{ minWidth: isMobile ? 280 : 320, maxWidth: isMobile ? 380 : 420, flex: 1, display: 'flex', justifyContent: 'center' }}>
             {activeFeature === 0 && (
               <div style={{
                 background: '#101214',
@@ -949,158 +959,466 @@ export default function ZerotrailPage() {
           }}>
             AI security engineer that never sleeps
           </h2>
-        </div>
+          </div>
         {/* Minimal Three-Column Feature Section (AI Never Sleeps) */}
         <section style={{
           background: '#060707',
-          padding: '24px 0 16px 0',
+          padding: isMobile ? '40px 0 40px 0' : '60px 0 60px 0',
           marginTop: '0px'
         }}>
-          <div style={{
+        <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '0 18px',
-            maxWidth: '900px',
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+            gap: isMobile ? '40px' : '32px',
+            maxWidth: isMobile ? '100%' : '1200px',
             margin: '0 auto',
-            alignItems: 'flex-start'
+            alignItems: 'flex-start',
+            padding: isMobile ? '0 16px' : '0 24px'
           }}>
-            {/* Card 1: Connect Zerotrail to GitHub */}
+                        {/* Card 1: Connect Zerotrail to GitHub */}
             <div style={{
-              background: '#101214',
-              borderRadius: '18px',
-              border: '1px solid #23272F',
-              padding: '32px 24px 28px 24px',
-              minHeight: 260,
+              background: '#060707',
+              borderRadius: '12px',
+              padding: isMobile ? '20px 16px' : '24px 18px',
+              width: '100%',
               display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              boxShadow: '0 2px 12px 0 #0004',
-              justifyContent: 'flex-end',
+              flexDirection: 'column'
             }}>
-              {/* Visual: CI/CD Integration */}
+              {/* Visual Mockup */}
               <div style={{
-                background: '#181A20',
-                borderRadius: '10px',
-                border: '1px solid #23272F',
-                padding: '10px 10px 6px 10px',
-                marginBottom: 14,
-                width: '100%',
-                minHeight: 48,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-                boxShadow: '0 1px 4px 0 #0002',
+                background: '#0A0A0A',
+                border: '1px solid #1A1A1A',
+                borderRadius: '6px',
+                padding: '16px',
+                marginBottom: '16px',
+                minHeight: '180px'
               }}>
-                <span style={{ fontFamily: 'Menlo, monospace', fontSize: '0.78rem', color: '#bdbdbd', fontWeight: 600, marginBottom: 4 }}>
-                  <svg width="16" height="16" fill="none" stroke="#bdbdbd" strokeWidth="2" viewBox="0 0 24 24" style={{ marginRight: 4, verticalAlign: 'middle' }}><path d="M4 17V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10"/><path d="M12 12v4"/><path d="M8 16h8"/></svg>
-                  GitHub · GitLab · Bitbucket
-                </span>
-                <span style={{ fontFamily: 'Menlo, monospace', fontSize: '0.7rem', color: '#6b7280', fontWeight: 400 }}>
-                  CI/CD Integration
-                </span>
-              </div>
-              <div style={{ fontWeight: 700, color: '#fff', fontSize: '0.98rem', marginBottom: 4, marginTop: 6, textAlign: 'center' }}>Connect Zerotrail to GitHub</div>
-              <div style={{ color: '#a1a1aa', fontSize: '0.88rem', fontWeight: 400, lineHeight: 1.5, textAlign: 'center' }}>
-                Get set up in under 2 minutes. Zerotrail integrates smoothly with your CI/CD workflow and supports GitHub, GitLab, and Bitbucket.
-              </div>
-            </div>
-            {/* Card 2: Detect Critical Issues Early */}
-            <div style={{
-              background: '#101214',
-              borderRadius: '18px',
-              border: '1px solid #23272F',
-              padding: '32px 24px 28px 24px',
-              minHeight: 260,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              boxShadow: '0 2px 12px 0 #0004',
-              justifyContent: 'flex-end',
-            }}>
-              {/* Visual: Code/Alert */}
-              <div style={{
-                background: '#181A20',
-                borderRadius: '16px',
-                border: '1.5px solid #23272F',
-                padding: '18px 16px 14px 16px',
-                marginBottom: 18,
-                width: '100%',
-                minHeight: 64,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-                boxShadow: '0 4px 24px 0 #0008, 0 1.5px 0 #23272F inset',
-                position: 'relative',
-                overflow: 'hidden',
-              }}>
-                {/* Add a subtle glow/highlight overlay */}
+                {/* Zerotrail + GitHub Connection */}
                 <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: 18,
-                  background: 'linear-gradient(90deg, rgba(255,255,255,0.07) 0%, rgba(0,0,0,0) 100%)',
-                  borderTopLeftRadius: 16,
-                  borderTopRightRadius: 16,
-                  pointerEvents: 'none',
-                }} />
-                <span style={{ fontFamily: 'Menlo, monospace', fontSize: '0.78rem', color: '#bdbdbd', fontWeight: 600, marginBottom: 4 }}>
-                  <svg width="16" height="16" fill="none" stroke="#ef4444" strokeWidth="2" viewBox="0 0 24 24" style={{ marginRight: 4, verticalAlign: 'middle' }}><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><circle cx="12" cy="16" r="1"/></svg>
-                  Critical Issue Detected
-                </span>
-                <span style={{ fontFamily: 'Menlo, monospace', fontSize: '0.7rem', color: '#6b7280', fontWeight: 400 }}>
-                  Broken authentication, logic flaws
-                </span>
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '16px',
+                  gap: '12px'
+                }}>
+                  {/* Zerotrail logo/brand */}
+                  <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+                    gap: '4px'
+          }}>
+            <div style={{
+                      width: '28px',
+                      height: '28px',
+                      background: '#111111',
+                      border: '1px solid #2A2A2A',
+                      borderRadius: '6px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+                      fontSize: '11px',
+                      color: '#B5B6B6',
+                      fontWeight: '500'
+            }}>
+                      ( )
+            </div>
+                    <span style={{ fontSize: '9px', color: '#6B6B6B' }}>zerotrail</span>
+            </div>
+                  
+                  {/* Connection line */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '2px'
+                  }}>
+                    <div style={{ width: '8px', height: '1px', background: '#4A4A4A' }} />
+                    <div style={{ width: '8px', height: '1px', background: '#4A4A4A' }} />
+                    <div style={{ width: '8px', height: '1px', background: '#4A4A4A' }} />
+            </div>
+                  
+                  {/* GitHub */}
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '4px'
+                  }}>
+                    <div style={{
+                      width: '28px',
+                      height: '28px',
+                      background: '#111111',
+                      border: '1px solid #2A2A2A',
+                      borderRadius: '6px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}>
+                      <SiGithub size={14} color="#B5B6B6" />
+          </div>
+                    <span style={{ fontSize: '9px', color: '#6B6B6B' }}>GitHub</span>
+                  </div>
+                </div>
+                
+                {/* Repository info */}
+                <div style={{
+                  background: '#111111',
+                  border: '1px solid #1A1A1A',
+                  borderRadius: '4px',
+                  padding: '8px',
+                  marginBottom: '10px'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: '4px'
+                  }}>
+                    <span style={{ fontSize: '11px', color: '#E5E5E5', fontWeight: '500' }}>
+                      company/payment-api
+                    </span>
+                    <span style={{
+                      background: '#2A2A2A',
+                      color: '#B5B6B6',
+                      padding: '1px 6px',
+                      borderRadius: '6px',
+                      fontSize: '9px',
+                      fontWeight: '500'
+                    }}>
+                      CONNECTED
+                    </span>
+                  </div>
+                  <div style={{ fontSize: '9px', color: '#6B6B6B' }}>
+                    Private • 47 commits • Last scan: 2 min ago
+                  </div>
+                </div>
+                
+                {/* Status indicators */}
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '4px'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    fontSize: '9px',
+                    color: '#8A8A8A'
+                  }}>
+                    <div style={{
+                      width: '3px',
+                      height: '3px',
+                      background: '#8A8A8A',
+                      borderRadius: '50%'
+                    }} />
+                    <span>Webhooks active</span>
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    fontSize: '9px',
+                    color: '#8A8A8A'
+                  }}>
+                    <div style={{
+                      width: '3px',
+                      height: '3px',
+                      background: '#8A8A8A',
+                      borderRadius: '50%'
+                    }} />
+                    <span>Auto-scanning enabled</span>
+                  </div>
+                </div>
               </div>
-              <div style={{ fontWeight: 700, color: '#fff', fontSize: '0.98rem', marginBottom: 4, marginTop: 6, textAlign: 'center' }}>Detect Critical Issues Early</div>
-              <div style={{ color: '#a1a1aa', fontSize: '0.88rem', fontWeight: 400, lineHeight: 1.5, textAlign: 'center' }}>
-                Zerotrail uncovers more real vulnerabilities — like broken authentication and logic flaws — with fewer false positives than traditional tools.
+              
+              {/* Content */}
+              <div>
+                <h3 style={{
+                  fontSize: isMobile ? '0.95rem' : '1rem',
+                  fontWeight: '500',
+                  color: '#ffffff',
+                  marginBottom: '8px',
+                  lineHeight: 1.3
+                }}>
+                  Connect Zerotrail to GitHub
+                </h3>
+                <p style={{
+                  fontSize: isMobile ? '0.8rem' : '0.85rem',
+                  color: '#8A8A8A',
+                  lineHeight: 1.4,
+                  margin: 0
+                }}>
+                  Get set up in under 2 minutes. Integrates with GitHub, GitLab, and Bitbucket.
+                </p>
               </div>
             </div>
-            {/* Card 3: Merge Verified Fixes, Not Just Reports */}
+
+                        {/* Card 2: Detect Critical Issues Early */}
             <div style={{
-              background: '#101214',
-              borderRadius: '18px',
-              border: '1px solid #23272F',
-              padding: '32px 24px 28px 24px',
-              minHeight: 260,
+              background: '#060707',
+              borderRadius: '12px',
+              padding: isMobile ? '20px 16px' : '24px 18px',
+              width: '100%',
               display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              boxShadow: '0 2px 12px 0 #0004',
-              justifyContent: 'flex-end',
+              flexDirection: 'column'
             }}>
-              {/* Visual: PR/Fix Suggestion */}
+                            {/* Visual Mockup */}
               <div style={{
-                background: '#181A20',
-                borderRadius: '16px',
-                border: '1.5px solid #23272F',
-                padding: '18px 16px 14px 16px',
-                marginBottom: 18,
-                width: '100%',
-                minHeight: 64,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-                boxShadow: '0 4px 24px 0 #0008, 0 1.5px 0 #23272F inset',
-                position: 'relative',
-                overflow: 'hidden',
+                background: '#0A0A0A',
+                border: '1px solid #1A1A1A',
+                borderRadius: '6px',
+                padding: '16px',
+                marginBottom: '16px',
+                minHeight: '180px'
               }}>
-                <span style={{ fontFamily: 'Menlo, monospace', fontSize: '0.78rem', color: '#bdbdbd', fontWeight: 600, marginBottom: 4 }}>
-                  <VscGitPullRequest size={16} color="#bdbdbd" style={{ marginRight: 4, verticalAlign: 'middle' }} />
-                  PR Patch Ready
-                </span>
-                <span style={{ fontFamily: 'Menlo, monospace', fontSize: '0.7rem', color: '#6b7280', fontWeight: 400 }}>
-                  Automated Fix Suggestion
-                </span>
+                {/* Vulnerability Card */}
+                <div style={{
+                  background: '#111111',
+                  border: '1px solid #2A2A2A',
+                  borderRadius: '6px',
+                  padding: '10px',
+                  marginBottom: '12px'
+                }}>
+                  <div style={{
+                    display: 'flex',
+            alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: '8px'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+                      gap: '6px'
+                    }}>
+                      <FaBug size={12} color="#B5B6B6" />
+                      <span style={{ fontSize: '11px', color: '#E5E5E5', fontWeight: '500' }}>
+                        SQL Injection
+                      </span>
+            </div>
+                    <span style={{
+                      background: '#2A2A2A',
+                      color: '#B5B6B6',
+                      padding: '1px 6px',
+                      borderRadius: '6px',
+                      fontSize: '8px',
+                      fontWeight: '500'
+                    }}>
+                      CRITICAL
+                    </span>
+            </div>
+                  <div style={{ fontSize: '9px', color: '#6B6B6B', marginBottom: '6px' }}>
+                    /api/auth/login.ts:42
+            </div>
+                  <div style={{
+                    background: '#0A0A0A',
+                    border: '1px solid #1A1A1A',
+                    borderRadius: '3px',
+                    padding: '6px',
+                    fontSize: '8px',
+                    fontFamily: 'monospace',
+                    color: '#B5B6B6'
+                  }}>
+                    <div style={{ color: '#8A8A8A' }}>- const query = `SELECT * FROM users WHERE email = '$&#123;email&#125;'`;</div>
+                    <div style={{ color: '#8A8A8A' }}>+ const query = `SELECT * FROM users WHERE email = ?`;</div>
+          </div>
+                </div>
+                
+                {/* Severity Breakdown */}
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  background: '#111111',
+                  border: '1px solid #1A1A1A',
+                  borderRadius: '4px',
+                  padding: '8px'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px'
+                  }}>
+                    <div style={{
+                      width: '6px',
+                      height: '6px',
+                      background: '#6B6B6B',
+                      borderRadius: '50%'
+                    }} />
+                    <span style={{ fontSize: '9px', color: '#B5B6B6' }}>1 Critical</span>
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px'
+                  }}>
+                    <div style={{
+                      width: '6px',
+                      height: '6px',
+                      background: '#6B6B6B',
+                      borderRadius: '50%'
+                    }} />
+                    <span style={{ fontSize: '9px', color: '#B5B6B6' }}>2 High</span>
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px'
+                  }}>
+                    <div style={{
+                      width: '6px',
+                      height: '6px',
+                      background: '#4A4A4A',
+                      borderRadius: '50%'
+                    }} />
+                    <span style={{ fontSize: '9px', color: '#6B6B6B' }}>5 Filtered</span>
+                  </div>
+                </div>
               </div>
-              <div style={{ fontWeight: 700, color: '#fff', fontSize: '0.98rem', marginBottom: 4, marginTop: 6, textAlign: 'center' }}>Merge Verified Fixes, Not Just Reports</div>
-              <div style={{ color: '#a1a1aa', fontSize: '0.88rem', fontWeight: 400, lineHeight: 1.5, textAlign: 'center' }}>
-                When confident a change is safe, Zerotrail skips the alert fatigue and opens a pull request with the fix — ready for your review.
+              
+              {/* Content */}
+              <div>
+                <h3 style={{
+                  fontSize: isMobile ? '0.95rem' : '1rem',
+                  fontWeight: '500',
+                  color: '#ffffff',
+                  marginBottom: '8px',
+                  lineHeight: 1.3
+                }}>
+                  Detect Critical Issues Early
+                </h3>
+                <p style={{
+                  fontSize: isMobile ? '0.8rem' : '0.85rem',
+                  color: '#8A8A8A',
+                  lineHeight: 1.4,
+                  margin: 0
+                }}>
+                  Uncovers real vulnerabilities like broken authentication and logic flaws with fewer false positives.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3: Merge Verified Fixes, Not Just Reports */}
+          <div style={{
+            background: '#060707',
+              borderRadius: '12px',
+              padding: isMobile ? '20px 16px' : '24px 18px',
+            width: '100%',
+            display: 'flex',
+              flexDirection: 'column'
+            }}>
+              {/* Visual Mockup */}
+              <div style={{
+                background: '#0A0A0A',
+                border: '1px solid #1A1A1A',
+                borderRadius: '6px',
+                padding: '16px',
+                marginBottom: '16px',
+                minHeight: '180px'
+              }}>
+                {/* Pull Request Header */}
+                <div style={{
+                  display: 'flex',
+            alignItems: 'center',
+                  gap: '6px',
+                  marginBottom: '10px',
+                  padding: '6px',
+                  background: '#111111',
+                  border: '1px solid #1A1A1A',
+                  borderRadius: '4px'
+                }}>
+                  <VscGitPullRequest size={12} color="#B5B6B6" />
+                  <span style={{ fontSize: '10px', color: '#B5B6B6', fontWeight: '500' }}>
+                    zerotrail-bot wants to merge 1 commit
+                  </span>
+                </div>
+                
+                {/* PR Title & Status */}
+                <div style={{
+                  background: '#111111',
+                  border: '1px solid #2A2A2A',
+                  borderRadius: '6px',
+                  padding: '10px',
+                  marginBottom: '10px'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: '6px'
+                  }}>
+                    <span style={{ fontSize: '11px', color: '#E5E5E5', fontWeight: '500' }}>
+                      Fix: SQL injection in auth endpoint
+                    </span>
+                    <span style={{
+                      background: '#2A2A2A',
+                      color: '#B5B6B6',
+                      padding: '1px 6px',
+                      borderRadius: '6px',
+                      fontSize: '8px',
+                      fontWeight: '500'
+                    }}>
+                      READY TO MERGE
+                    </span>
+                  </div>
+                  <div style={{ fontSize: '9px', color: '#6B6B6B', marginBottom: '8px' }}>
+                    #247 • zerotrail-bot • 2 minutes ago
+                  </div>
+                  
+                  {/* Code diff preview */}
+                  <div style={{
+                    background: '#0A0A0A',
+                    border: '1px solid #1A1A1A',
+                    borderRadius: '3px',
+                    padding: '6px',
+                    fontSize: '8px',
+                    fontFamily: 'monospace'
+                  }}>
+                    <div style={{ color: '#6B6B6B', marginBottom: '3px' }}>api/auth/login.ts</div>
+                    <div style={{ color: '#8A8A8A' }}>- const query = `SELECT * FROM users WHERE email = '$&#123;email&#125;'`;</div>
+                    <div style={{ color: '#8A8A8A' }}>+ const query = `SELECT * FROM users WHERE email = ?`;</div>
+                  </div>
+                </div>
+                
+                {/* PR Stats */}
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  fontSize: '9px',
+                  color: '#6B6B6B'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}>
+                    <span style={{ color: '#8A8A8A' }}>✓ All checks passed</span>
+                    <span>+2 -1</span>
+                  </div>
+                  <span>Confidence: 98%</span>
+                </div>
+              </div>
+              
+              {/* Content */}
+              <div>
+                <h3 style={{
+                  fontSize: isMobile ? '0.95rem' : '1rem',
+                  fontWeight: '500',
+                  color: '#ffffff',
+                  marginBottom: '8px',
+                  lineHeight: 1.3
+                }}>
+                  Merge Verified Fixes, Not Just Reports
+                </h3>
+                <p style={{
+                  fontSize: isMobile ? '0.8rem' : '0.85rem',
+                  color: '#8A8A8A',
+                  lineHeight: 1.4,
+                  margin: 0
+                }}>
+                  When confident a change is safe, opens a pull request with the fix — ready for review.
+                </p>
               </div>
             </div>
           </div>
@@ -1110,23 +1428,23 @@ export default function ZerotrailPage() {
       {/* DAST Integration Section */}
       <section style={{
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: isMobile ? 'column' : 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        gap: '32px',
-        padding: '80px 24px 40px 24px',
+        gap: isMobile ? '24px' : '32px',
+        padding: isMobile ? '40px 16px 20px 16px' : '80px 24px 40px 24px',
         maxWidth: '1200px',
         margin: '0 auto',
       }}>
         {/* Left: Text Content */}
-        <div style={{ flex: 1, minWidth: 320, maxWidth: 420, margin: '0 auto', paddingLeft: 80 }}>
+        <div style={{ flex: 1, minWidth: isMobile ? 'auto' : 320, maxWidth: isMobile ? 'none' : 420, margin: '0 auto', paddingLeft: isMobile ? 0 : 80 }}>
           <div style={{ marginBottom: 16 }}>
             <span style={{ color: '#9ca3af', fontSize: '0.95rem', fontWeight: 500, letterSpacing: '0.04em' }}>
               Under the hood
             </span>
           </div>
           <h2 style={{
-            fontSize: '1.8rem',
+            fontSize: isMobile ? '1.5rem' : '1.8rem',
             fontWeight: 400,
             color: '#fff',
             marginBottom: 18,
@@ -1137,69 +1455,74 @@ export default function ZerotrailPage() {
           </h2>
           <p style={{
             color: '#9ca3af',
-            fontSize: '1.1rem',
+            fontSize: isMobile ? '1rem' : '1.1rem',
             maxWidth: 500,
             fontWeight: 400,
-            marginBottom: 0,
+            marginBottom: isMobile ? '32px' : 0,
           }}>
             Zerotrail connects to your favorite DAST tools, triages real vulnerabilities in a secure sandbox, and writes production-ready patches as pull requests.
           </p>
         </div>
-        {/* Right: SVG Diagram */}
-        <div style={{ flex: 1.2, minWidth: 380, position: 'relative', height: 340, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg width="100%" height="340" viewBox="0 0 600 340" style={{ position: 'absolute', left: 0, top: 0, zIndex: 1, pointerEvents: 'none' }}>
-            {/* DAST tools to Zerotrail ( ) */}
-            <polyline points="80,70 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
-            <polyline points="80,110 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
-            <polyline points="80,150 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
-            <polyline points="80,190 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
-            <polyline points="80,230 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
-            <polyline points="80,270 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
-            {/* Zerotrail to PR - straight horizontal greyscale line */}
-            <polyline points="300,170 380,170" stroke="#23272F" strokeWidth="1.5" fill="none" />
-          </svg>
-          {/* DAST Tool Icons - tightly grouped, no bg */}
-          <div style={{ position: 'absolute', left: 60, top: 55, width: 40, display: 'flex', flexDirection: 'column', gap: 18, zIndex: 2 }}>
-            <ToolBoxGrey icon={<SiSnyk size={18} color="#bdbdbd" />} />
-            <ToolBoxGrey icon={<FaBug size={16} color="#bdbdbd" />} />
-            <ToolBoxGrey icon={<SiCheckmarx size={18} color="#bdbdbd" />} />
-            <ToolBoxGrey icon={<svg width="18" height="18" fill="none" stroke="#bdbdbd" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="8"/><path d="M8 12h8"/></svg>} />
-            <ToolBoxGrey icon={<svg width="18" height="18" fill="none" stroke="#bdbdbd" strokeWidth="2" viewBox="0 0 24 24"><polygon points="12,2 22,22 2,22"/></svg>} />
-            <ToolBoxGrey icon={<SiGithub size={18} color="#bdbdbd" />} />
-          </div>
-          {/* Zerotrail Node (center) */}
-          <div style={{ position: 'absolute', left: 210, top: 150, width: 90, zIndex: 2 }}>
+        {/* Right: Diagram - Simple on mobile, complex on desktop */}
+        {isMobile ? (
+          /* Mobile: Simple vertical flow */
+            <div style={{
+              width: '100%',
+              display: 'flex',
+            flexDirection: 'column',
+              alignItems: 'center',
+            gap: '20px',
+            padding: '20px 0'
+          }}>
+            {/* DAST Tools Row */}
+            <div style={{
+              display: 'flex',
+              gap: '8px',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              justifyContent: 'center'
+            }}>
+              <ToolBoxGrey icon={<SiSnyk size={16} color="#bdbdbd" />} />
+              <ToolBoxGrey icon={<FaBug size={14} color="#bdbdbd" />} />
+              <ToolBoxGrey icon={<SiCheckmarx size={16} color="#bdbdbd" />} />
+              <ToolBoxGrey icon={<SiGithub size={16} color="#bdbdbd" />} />
+            </div>
+            
+            {/* Arrow Down */}
+            <div style={{ color: '#23272F', fontSize: '20px' }}>↓</div>
+            
+            {/* Zerotrail Sandbox */}
             <div style={{
               border: '2px solid #23272F',
               borderRadius: '10px',
-              padding: '18px 0 12px 0',
+              padding: '16px 20px 12px 20px',
               background: '#060707',
               boxShadow: '0 4px 18px 0 #000a',
-              minWidth: 70,
-              minHeight: 60,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               gap: 4,
             }}>
-              <div style={{ fontFamily: 'Menlo, monospace', fontSize: '1.05rem', color: '#bdbdbd', fontWeight: 700, letterSpacing: '0.04em', marginBottom: 2 }}>
+              <div style={{ fontFamily: 'Menlo, monospace', fontSize: '1rem', color: '#bdbdbd', fontWeight: 700, letterSpacing: '0.04em', marginBottom: 2 }}>
                 ( )
               </div>
-              <div style={{ fontFamily: 'Menlo, monospace', fontSize: '0.8rem', color: '#bdbdbd', fontWeight: 600, letterSpacing: '0.04em', marginBottom: 1, textAlign: 'center', width: '100%' }}>
+              <div style={{ fontFamily: 'Menlo, monospace', fontSize: '0.75rem', color: '#bdbdbd', fontWeight: 600, letterSpacing: '0.04em', textAlign: 'center' }}>
                 ZEROTRAIL<br />SANDBOX
               </div>
             </div>
-          </div>
-          {/* PR Output Node - match hero section */}
-          <div style={{ position: 'absolute', left: 380, top: 150, width: 180, zIndex: 2 }}>
+            
+            {/* Arrow Down */}
+            <div style={{ color: '#23272F', fontSize: '20px' }}>↓</div>
+            
+            {/* PR Output */}
             <div style={{
               border: '1px solid #23272F',
               borderRadius: '8px',
               padding: '10px 12px 8px 12px',
               background: '#060707',
               boxShadow: '0 2px 8px 0 #0006',
-              minWidth: 120,
-              minHeight: 44,
+              width: '280px',
+              maxWidth: '90%',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'flex-start',
@@ -1209,21 +1532,21 @@ export default function ZerotrailPage() {
                 <VscGitPullRequest size={14} color="#bdbdbd" />
                 <span style={{
                   fontFamily: 'Menlo, monospace',
-                  fontSize: '0.8rem',
+                  fontSize: '0.75rem',
                   color: '#e5e7eb',
                   fontWeight: 600,
                   letterSpacing: '0.01em',
                   whiteSpace: 'nowrap',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
-                  maxWidth: 120
+                  maxWidth: 200
                 }}>
                   fix: XSS: Unsanitized SVG Upload..
                 </span>
               </div>
               <div style={{
                 fontFamily: 'Menlo, monospace',
-                fontSize: '0.65rem',
+                fontSize: '0.6rem',
                 color: '#6b7280',
                 fontWeight: 400,
                 letterSpacing: '0.01em'
@@ -1239,25 +1562,150 @@ export default function ZerotrailPage() {
               </div>
             </div>
           </div>
+        ) : (
+          /* Desktop: Complex SVG diagram */
+          <div style={{ 
+            flex: 1.2, 
+            minWidth: 380, 
+            position: 'relative', 
+            height: '340px', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center'
+          }}>
+            <svg width="100%" height="340" viewBox="0 0 600 340" style={{ position: 'absolute', left: 0, top: 0, zIndex: 1, pointerEvents: 'none' }}>
+              {/* DAST tools to Zerotrail ( ) */}
+              <polyline points="80,70 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
+              <polyline points="80,110 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
+              <polyline points="80,150 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
+              <polyline points="80,190 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
+              <polyline points="80,230 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
+              <polyline points="80,270 210,170" stroke="#23272F" strokeWidth="1.2" fill="none" strokeDasharray="4,4" />
+              {/* Zerotrail to PR - straight horizontal greyscale line */}
+              <polyline points="300,170 380,170" stroke="#23272F" strokeWidth="1.5" fill="none" />
+              </svg>
+            {/* DAST Tool Icons - tightly grouped, no bg */}
+            <div style={{ 
+              position: 'absolute', 
+              left: 60, 
+              top: 55, 
+              width: 40, 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: 18, 
+              zIndex: 2 
+            }}>
+              <ToolBoxGrey icon={<SiSnyk size={18} color="#bdbdbd" />} />
+              <ToolBoxGrey icon={<FaBug size={16} color="#bdbdbd" />} />
+              <ToolBoxGrey icon={<SiCheckmarx size={18} color="#bdbdbd" />} />
+              <ToolBoxGrey icon={<svg width="18" height="18" fill="none" stroke="#bdbdbd" strokeWidth="2" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="8"/><path d="M8 12h8"/></svg>} />
+              <ToolBoxGrey icon={<svg width="18" height="18" fill="none" stroke="#bdbdbd" strokeWidth="2" viewBox="0 0 24 24"><polygon points="12,2 22,22 2,22"/></svg>} />
+              <ToolBoxGrey icon={<SiGithub size={18} color="#bdbdbd" />} />
+            </div>
+            {/* Zerotrail Node (center) */}
+            <div style={{ 
+              position: 'absolute', 
+              left: 210, 
+              top: 150, 
+              width: 90, 
+              zIndex: 2 
+            }}>
+              <div style={{
+                border: '2px solid #23272F',
+                borderRadius: '10px',
+                padding: '18px 0 12px 0',
+                background: '#060707',
+                boxShadow: '0 4px 18px 0 #000a',
+                minWidth: 70,
+                minHeight: 60,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 4,
+              }}>
+                <div style={{ fontFamily: 'Menlo, monospace', fontSize: '1.05rem', color: '#bdbdbd', fontWeight: 700, letterSpacing: '0.04em', marginBottom: 2 }}>
+                  ( )
+            </div>
+                <div style={{ fontFamily: 'Menlo, monospace', fontSize: '0.8rem', color: '#bdbdbd', fontWeight: 600, letterSpacing: '0.04em', marginBottom: 1, textAlign: 'center', width: '100%' }}>
+                  ZEROTRAIL<br />SANDBOX
+            </div>
+          </div>
         </div>
+            {/* PR Output Node - match hero section */}
+            <div style={{ 
+              position: 'absolute', 
+              left: 380, 
+              top: 150, 
+              width: 180, 
+              zIndex: 2 
+            }}>
+              <div style={{
+                border: '1px solid #23272F',
+                borderRadius: '8px',
+                padding: '10px 12px 8px 12px',
+                background: '#060707',
+                boxShadow: '0 2px 8px 0 #0006',
+                minWidth: 120,
+                minHeight: 44,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                gap: 5,
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+                  <VscGitPullRequest size={14} color="#bdbdbd" />
+                  <span style={{
+                    fontFamily: 'Menlo, monospace',
+                    fontSize: '0.8rem',
+                    color: '#e5e7eb',
+                    fontWeight: 600,
+                    letterSpacing: '0.01em',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    maxWidth: 120
+                  }}>
+                    fix: XSS: Unsanitized SVG Upload..
+                  </span>
+                </div>
+                <div style={{
+                  fontFamily: 'Menlo, monospace',
+                  fontSize: '0.65rem',
+                  color: '#6b7280',
+                  fontWeight: 400,
+                  letterSpacing: '0.01em'
+                }}>
+                  #1019 opened yesterday by zerotrail <span style={{
+                    background: '#23272F',
+                    color: '#bdbdbd',
+                    borderRadius: 8,
+                    padding: '1px 6px',
+                    fontSize: '0.7em',
+                    marginLeft: 4
+                  }}>bot</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Pricing Section */}
       <section style={{
-        paddingLeft: '24px',
-        paddingRight: '24px',
-        paddingBottom: '80px',
-        paddingTop: '80px',
+        paddingLeft: isMobile ? '16px' : '24px',
+        paddingRight: isMobile ? '16px' : '24px',
+        paddingBottom: isMobile ? '60px' : '80px',
+        paddingTop: isMobile ? '60px' : '80px',
         maxWidth: '1200px',
         margin: '0 auto'
       }}>
         {/* Section Headline */}
         <div style={{
           textAlign: 'center',
-          marginBottom: '64px'
+          marginBottom: isMobile ? '40px' : '64px'
         }}>
           <h2 style={{
-            fontSize: '2.2rem',
+            fontSize: isMobile ? '1.8rem' : '2.2rem',
             fontWeight: '700',
             lineHeight: '1.1',
             color: '#ffffff',
@@ -1267,7 +1715,7 @@ export default function ZerotrailPage() {
             Simple pricing
           </h2>
           <p style={{
-            fontSize: '1rem',
+            fontSize: isMobile ? '0.9rem' : '1rem',
             color: '#9ca3af',
             fontWeight: '400',
             maxWidth: '600px',
@@ -1280,8 +1728,8 @@ export default function ZerotrailPage() {
         {/* Pricing Cards */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-          gap: '32px',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(400px, 1fr))',
+          gap: isMobile ? '24px' : '32px',
           maxWidth: '900px',
           margin: '0 auto'
         }}>
