@@ -1219,7 +1219,7 @@ zerotrail detects, analyzes, and suggests mitigations for vulnerabilities at bot
                     fontFamily: 'monospace',
                     color: '#B5B6B6'
                   }}>
-                    <div style={{ color: '#8A8A8A' }}>- const query = `SELECT * FROM users WHERE email = '$&#123;email&#125;'`;</div>
+                    <div style={{ color: '#8A8A8A' }}>- const query = `SELECT * FROM users WHERE email = &apos;$&#123;email&#125;&apos;`;</div>
                     <div style={{ color: '#8A8A8A' }}>+ const query = `SELECT * FROM users WHERE email = ?`;</div>
           </div>
                 </div>
@@ -1375,7 +1375,7 @@ zerotrail detects, analyzes, and suggests mitigations for vulnerabilities at bot
                     fontFamily: 'monospace'
                   }}>
                     <div style={{ color: '#6B6B6B', marginBottom: '3px' }}>api/auth/login.ts</div>
-                    <div style={{ color: '#8A8A8A' }}>- const query = `SELECT * FROM users WHERE email = '$&#123;email&#125;'`;</div>
+                    <div style={{ color: '#8A8A8A' }}>- const query = `SELECT * FROM users WHERE email = &apos;$&#123;email&#125;&apos;`;</div>
                     <div style={{ color: '#8A8A8A' }}>+ const query = `SELECT * FROM users WHERE email = ?`;</div>
                   </div>
                 </div>
