@@ -8,7 +8,10 @@ export const metadata: Metadata = {
   title: 'zerotrail - AI Security Engineer',
   description: 'AI security engineer that never sleeps. Reviews every pull request, finds real vulnerabilities, generates PoCs, and writes patches — automatically.',
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-16x16.svg', sizes: '16x16', type: 'image/svg+xml' }
+    ],
     shortcut: '/favicon.svg',
     apple: '/favicon.svg',
   },
