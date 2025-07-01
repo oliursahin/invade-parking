@@ -8,10 +8,13 @@ import { useRef, useEffect, useState } from 'react';
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isLargeMobile, setIsLargeMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsLargeMobile(width > 390 && width <= 768); // iPhone Pro Max and similar
     };
     
     checkMobile();
@@ -52,13 +55,13 @@ export default function Home() {
             alignItems: 'flex-start',
             justifyContent: 'center',
             padding: isMobile ? '0 16px' : '0 0 0 80px',
-            marginTop: isMobile ? 80 : 150,
+            marginTop: isMobile ? (isLargeMobile ? 100 : 80) : 150,
             marginBottom: 0,
           }}>
             <h1 style={{
               fontFamily: '"IBM Plex Sans Condensed", sans-serif',
               fontWeight: 500,
-              fontSize: isMobile ? 24 : 36,
+              fontSize: isMobile ? (isLargeMobile ? 32 : 24) : 36,
               lineHeight: 1.13,
               margin: 0,
               letterSpacing: '-0.03em',
@@ -74,9 +77,9 @@ export default function Home() {
             <div style={{
               fontFamily: '"IBM Plex Sans Condensed", sans-serif',
               fontWeight: 500,
-              fontSize: isMobile ? 14 : 16,
+              fontSize: isMobile ? (isLargeMobile ? 16 : 14) : 16,
               color: '#B5B6B6',
-              marginBottom: isMobile ? 16 : 24,
+              marginBottom: isMobile ? (isLargeMobile ? 20 : 16) : 24,
               maxWidth: isMobile ? 'calc(100% - 32px)' : 650,
               textAlign: 'left',
               lineHeight: 1.6,
@@ -87,7 +90,7 @@ export default function Home() {
             </div>
             <div style={{ 
               display: 'flex', 
-              gap: isMobile ? 12 : 18, 
+              gap: isMobile ? (isLargeMobile ? 16 : 12) : 18, 
               alignItems: 'center', 
               marginTop: 0, 
               marginBottom: 0,
@@ -104,7 +107,7 @@ export default function Home() {
                   padding: 0,
                   fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                   fontWeight: 500,
-                  fontSize: isMobile ? 13 : 15,
+                  fontSize: isMobile ? (isLargeMobile ? 15 : 13) : 15,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -126,7 +129,7 @@ export default function Home() {
                   padding: 0,
                   fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                   fontWeight: 500,
-                  fontSize: isMobile ? 13 : 15,
+                  fontSize: isMobile ? (isLargeMobile ? 15 : 13) : 15,
                   cursor: 'pointer',
                   boxShadow: 'none',
                   transition: 'color 0.18s',
@@ -152,10 +155,13 @@ export default function Home() {
 // Scroll-based Feature Section extracted as its own component
 function ScrollFeatureSection() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isLargeMobile, setIsLargeMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsLargeMobile(width > 390 && width <= 768);
     };
     
     checkMobile();
@@ -245,7 +251,7 @@ function ScrollFeatureSection() {
                 flexDirection: isLeft ? 'row' : 'row-reverse',
                 alignItems: 'center',
                 width: '100%',
-                margin: i === 0 ? (isMobile ? '0 0 40px 0' : '0 0 80px 0') : (isMobile ? '40px 0' : '80px 0'),
+                margin: i === 0 ? (isMobile ? (isLargeMobile ? '0 0 48px 0' : '0 0 40px 0') : '0 0 80px 0') : (isMobile ? (isLargeMobile ? '48px 0' : '40px 0') : '80px 0'),
                 position: 'relative',
                 zIndex: 1,
               }}
@@ -258,13 +264,13 @@ function ScrollFeatureSection() {
                 alignItems: isLeft ? 'flex-end' : 'flex-start',
                 justifyContent: 'center',
                 textAlign: isLeft ? 'right' : 'left',
-                paddingRight: isLeft ? (isMobile ? 20 : 40) : 0,
-                paddingLeft: isLeft ? 0 : (isMobile ? 20 : 40),
+                paddingRight: isLeft ? (isMobile ? (isLargeMobile ? 24 : 20) : 40) : 0,
+                paddingLeft: isLeft ? 0 : (isMobile ? (isLargeMobile ? 24 : 20) : 40),
               }}>
                 <div style={{
                   fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                   fontWeight: 400,
-                  fontSize: isMobile ? 13 : 15,
+                  fontSize: isMobile ? (isLargeMobile ? 14 : 13) : 15,
                   color: isActive ? '#fff' : '#B5B6B6',
                   marginBottom: 6,
                   opacity: 0.9,
@@ -273,10 +279,10 @@ function ScrollFeatureSection() {
                 <div style={{
                   fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                   fontWeight: 500,
-                  fontSize: isMobile ? 14 : 16,
+                  fontSize: isMobile ? (isLargeMobile ? 16 : 14) : 16,
                   color: isActive ? '#fff' : '#B5B6B6',
                   opacity: 1,
-                  maxWidth: isMobile ? 250 : 320,
+                  maxWidth: isMobile ? (isLargeMobile ? 300 : 250) : 320,
                   transition: 'color 0.3s',
                 }}>{f.title}</div>
               </div>
@@ -293,10 +299,13 @@ function ScrollFeatureSection() {
 // Footer copied from zerotrail page
 function ZerotrailFooter() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isLargeMobile, setIsLargeMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsLargeMobile(width > 390 && width <= 768);
     };
     
     checkMobile();
@@ -307,23 +316,23 @@ function ZerotrailFooter() {
   return (
     <footer style={{
       textAlign: 'center',
-      padding: isMobile ? '80px 0 60px 0' : '32px 0 16px 0',
+      padding: isMobile ? (isLargeMobile ? '100px 0 80px 0' : '80px 0 60px 0') : '32px 0 16px 0',
       color: '#6b7280',
       fontSize: '0.92rem',
       fontWeight: 400,
       background: '#08090A',
-      marginTop: isMobile ? '60px' : '32px',
-      minHeight: isMobile ? '200px' : 'auto',
+      marginTop: isMobile ? (isLargeMobile ? '80px' : '60px') : '32px',
+      minHeight: isMobile ? (isLargeMobile ? '240px' : '200px') : 'auto',
     }}>
       {/* Large Brand Text */}
               <div style={{
           textAlign: 'center',
           position: 'relative',
-          height: isMobile ? '120px' : '120px',
+          height: isMobile ? (isLargeMobile ? '140px' : '120px') : '120px',
           overflow: 'hidden'
         }}>
         <h2 style={{
-          fontSize: isMobile ? '3rem' : '8rem',
+          fontSize: isMobile ? (isLargeMobile ? '4rem' : '3rem') : '8rem',
           fontWeight: '900',
           color: '#1A1B1E',
           margin: 0,
@@ -331,7 +340,7 @@ function ZerotrailFooter() {
           letterSpacing: '-0.05em',
           userSelect: 'none',
           position: 'relative',
-          top: isMobile ? '10px' : '20px',
+          top: isMobile ? (isLargeMobile ? '15px' : '10px') : '20px',
           opacity: '1'
         }}>
           zerotrail
@@ -342,7 +351,7 @@ function ZerotrailFooter() {
           bottom: 0,
           left: 0,
           right: 0,
-          height: isMobile ? '20px' : '40px',
+          height: isMobile ? (isLargeMobile ? '30px' : '20px') : '40px',
           background: 'linear-gradient(to bottom, transparent 0%, #08090A 100%)',
           pointerEvents: 'none'
         }}></div>
