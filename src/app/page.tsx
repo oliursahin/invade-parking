@@ -19,7 +19,13 @@ type ViewportState = {
 };
 
 // Style helper functions for responsive design
-const getResponsiveValue = (mobile: any, largeMobile: any, tablet: any, desktop: any, viewport: ViewportState) => {
+const getResponsiveValue = (
+  mobile: string | number, 
+  largeMobile: string | number, 
+  tablet: string | number, 
+  desktop: string | number, 
+  viewport: ViewportState
+): string | number => {
   if (viewport.isMobile) {
     return viewport.isLargeMobile ? largeMobile : mobile;
   }
