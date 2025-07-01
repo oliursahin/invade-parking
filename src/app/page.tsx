@@ -23,12 +23,12 @@ export default function Home() {
     <>
       <div style={{ 
         minHeight: '100vh', 
-        width: '100vw', 
+        width: '100%', 
         background: '#08090A', 
         display: 'flex', 
         flexDirection: 'column', 
         marginTop: 0, 
-        paddingTop: 0 
+        overflowX: 'hidden'
       }}>
         <main style={{
           width: '100%',
@@ -38,10 +38,9 @@ export default function Home() {
           alignItems: 'center',
           justifyContent: 'flex-start',
           textAlign: 'left',
-          padding: '0 16px 0 16px',
+          padding: '0 16px',
           marginTop: 0,
           marginBottom: 0,
-          paddingTop: 0,
           height: 'auto',
         }}>
           <div style={{
@@ -52,23 +51,23 @@ export default function Home() {
             flexDirection: 'column',
             alignItems: 'flex-start',
             justifyContent: 'center',
-            padding: isMobile ? '0px 0 0px 16px' : '0px 0 0px 80px',
-            marginTop: isMobile ? 120 : 150,
-            paddingTop: 0,
+            padding: isMobile ? '0 16px' : '0 0 0 80px',
+            marginTop: isMobile ? 80 : 150,
             marginBottom: 0,
-            paddingBottom: 0,
           }}>
             <h1 style={{
               fontFamily: '"IBM Plex Sans Condensed", sans-serif',
               fontWeight: 500,
-              fontSize: isMobile ? 28 : 36,
+              fontSize: isMobile ? 24 : 36,
               lineHeight: 1.13,
               margin: 0,
               letterSpacing: '-0.03em',
               color: '#F7F8F8',
               marginBottom: 8,
               textAlign: 'left',
-              maxWidth: isMobile ? '100%' : 650,
+              maxWidth: isMobile ? 'calc(100% - 32px)' : 650,
+              wordWrap: 'break-word',
+              overflowWrap: 'break-word',
             }}>
               ai security engineer that never sleeps.
             </h1>
@@ -78,9 +77,11 @@ export default function Home() {
               fontSize: isMobile ? 14 : 16,
               color: '#B5B6B6',
               marginBottom: isMobile ? 16 : 24,
-              maxWidth: isMobile ? '100%' : 650,
+              maxWidth: isMobile ? 'calc(100% - 32px)' : 650,
               textAlign: 'left',
               lineHeight: 1.6,
+              wordWrap: 'break-word',
+              overflowWrap: 'break-word',
             }}>
               reviews every pull request, finds real vulnerabilities, produces poc exploits, and writes patches — automatically.
             </div>
@@ -140,7 +141,7 @@ export default function Home() {
         {/* Main content ends here. Add a clear separation before the scroll feature section. */}
       </div>
       {/* Separate page section for scroll feature section */}
-      <div style={{ width: '100%', marginTop: isMobile ? -300 : -100, paddingTop: 0 }}>
+      <div style={{ width: '100%', marginTop: isMobile ? -300 : -100 }}>
         <ScrollFeatureSection />
       </div>
       <ZerotrailFooter />
@@ -324,7 +325,7 @@ function ZerotrailFooter() {
         <h2 style={{
           fontSize: isMobile ? '3rem' : '8rem',
           fontWeight: '900',
-          color: '#202124',
+          color: '#1A1B1E',
           margin: 0,
           lineHeight: '1',
           letterSpacing: '-0.05em',
@@ -342,7 +343,7 @@ function ZerotrailFooter() {
           left: 0,
           right: 0,
           height: isMobile ? '20px' : '40px',
-          background: 'linear-gradient(to bottom, transparent 0%, #000000 100%)',
+          background: 'linear-gradient(to bottom, transparent 0%, #08090A 100%)',
           pointerEvents: 'none'
         }}></div>
       </div>
