@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 
 // Breakpoint constants for responsive design
 const BREAKPOINTS = {
@@ -249,7 +249,7 @@ function useViewport() {
 
 export default function Home() {
   const viewport = useViewport();
-  const styles = createResponsiveStyles(viewport);
+  const styles = useMemo(() => createResponsiveStyles(viewport), [viewport]);
 
   return (
     <>
