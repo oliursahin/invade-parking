@@ -25,9 +25,23 @@ function useViewport() {
       setIsTablet(width > BREAKPOINTS.MOBILE && width <= BREAKPOINTS.TABLET);
     };
     
+    // Debounce function to limit resize event frequency
+    let timeoutId: NodeJS.Timeout;
+    const debouncedCheckViewport = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkViewport, 150); // 150ms debounce delay
+    };
+    
+    // Initial check
     checkViewport();
-    window.addEventListener('resize', checkViewport);
-    return () => window.removeEventListener('resize', checkViewport);
+    
+    // Add debounced resize listener
+    window.addEventListener('resize', debouncedCheckViewport);
+    
+    return () => {
+      window.removeEventListener('resize', debouncedCheckViewport);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return { isMobile, isLargeMobile, isTablet };
