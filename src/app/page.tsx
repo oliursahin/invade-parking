@@ -216,9 +216,11 @@ function useViewport() {
     };
     
     // Debounce function to limit resize event frequency
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
     const debouncedCheckViewport = () => {
-      clearTimeout(timeoutId);
+      if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+      }
       timeoutId = setTimeout(checkViewport, 150); // 150ms debounce delay
     };
     
@@ -230,7 +232,9 @@ function useViewport() {
     
     return () => {
       window.removeEventListener('resize', debouncedCheckViewport);
-      clearTimeout(timeoutId);
+      if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+      }
     };
   }, []);
 
