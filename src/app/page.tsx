@@ -4,23 +4,37 @@ import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { useRef, useEffect, useState } from 'react';
 
+// Breakpoint constants for responsive design
+const BREAKPOINTS = {
+  SMALL_MOBILE: 390,    // iPhone 12 mini, iPhone SE
+  MOBILE: 768,          // Standard mobile breakpoint
+  TABLET: 1024,         // iPad and tablet devices
+} as const;
 
-
-export default function Home() {
+// Custom hook for viewport detection
+function useViewport() {
   const [isMobile, setIsMobile] = useState(false);
   const [isLargeMobile, setIsLargeMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
+    const checkViewport = () => {
       const width = window.innerWidth;
-      setIsMobile(width <= 768);
-      setIsLargeMobile(width > 390 && width <= 768); // iPhone Pro Max and similar
+      setIsMobile(width <= BREAKPOINTS.MOBILE);
+      setIsLargeMobile(width > BREAKPOINTS.SMALL_MOBILE && width <= BREAKPOINTS.MOBILE);
+      setIsTablet(width > BREAKPOINTS.MOBILE && width <= BREAKPOINTS.TABLET);
     };
     
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    checkViewport();
+    window.addEventListener('resize', checkViewport);
+    return () => window.removeEventListener('resize', checkViewport);
   }, []);
+
+  return { isMobile, isLargeMobile, isTablet };
+}
+
+export default function Home() {
+  const { isMobile, isLargeMobile, isTablet } = useViewport();
 
   return (
     <>
@@ -54,21 +68,21 @@ export default function Home() {
             flexDirection: 'column',
             alignItems: 'flex-start',
             justifyContent: 'center',
-            padding: isMobile ? '0 16px' : '0 0 0 80px',
-            marginTop: isMobile ? (isLargeMobile ? 100 : 80) : 150,
+            padding: isMobile ? '0 16px' : (isTablet ? '0 0 0 40px' : '0 0 0 80px'),
+            marginTop: isMobile ? (isLargeMobile ? 100 : 80) : (isTablet ? 120 : 150),
             marginBottom: 0,
           }}>
             <h1 style={{
               fontFamily: '"IBM Plex Sans Condensed", sans-serif',
               fontWeight: 500,
-              fontSize: isMobile ? (isLargeMobile ? 32 : 24) : 36,
+              fontSize: isMobile ? (isLargeMobile ? 32 : 24) : (isTablet ? 42 : 36),
               lineHeight: 1.13,
               margin: 0,
               letterSpacing: '-0.03em',
               color: '#F7F8F8',
               marginBottom: 8,
               textAlign: 'left',
-              maxWidth: isMobile ? 'calc(100% - 32px)' : 650,
+              maxWidth: isMobile ? 'calc(100% - 32px)' : (isTablet ? 800 : 650),
               wordWrap: 'break-word',
               overflowWrap: 'break-word',
             }}>
@@ -77,10 +91,10 @@ export default function Home() {
             <div style={{
               fontFamily: '"IBM Plex Sans Condensed", sans-serif',
               fontWeight: 500,
-              fontSize: isMobile ? (isLargeMobile ? 16 : 14) : 16,
+              fontSize: isMobile ? (isLargeMobile ? 16 : 14) : (isTablet ? 18 : 16),
               color: '#B5B6B6',
-              marginBottom: isMobile ? (isLargeMobile ? 20 : 16) : 24,
-              maxWidth: isMobile ? 'calc(100% - 32px)' : 650,
+              marginBottom: isMobile ? (isLargeMobile ? 20 : 16) : (isTablet ? 28 : 24),
+              maxWidth: isMobile ? 'calc(100% - 32px)' : (isTablet ? 800 : 650),
               textAlign: 'left',
               lineHeight: 1.6,
               wordWrap: 'break-word',
@@ -90,7 +104,7 @@ export default function Home() {
             </div>
             <div style={{ 
               display: 'flex', 
-              gap: isMobile ? (isLargeMobile ? 16 : 12) : 18, 
+              gap: isMobile ? (isLargeMobile ? 16 : 12) : (isTablet ? 20 : 18), 
               alignItems: 'center', 
               marginTop: 0, 
               marginBottom: 0,
@@ -107,7 +121,7 @@ export default function Home() {
                   padding: 0,
                   fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                   fontWeight: 500,
-                  fontSize: isMobile ? (isLargeMobile ? 15 : 13) : 15,
+                  fontSize: isMobile ? (isLargeMobile ? 15 : 13) : (isTablet ? 16 : 15),
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -117,7 +131,7 @@ export default function Home() {
                   textDecoration: 'underline',
                 }}
               >
-                <FaGithub size={16} style={{ marginRight: 4 }} />
+                <FaGithub size={isTablet ? 18 : 16} style={{ marginRight: 4 }} />
                 connect with github
               </a>
               <a
@@ -129,7 +143,7 @@ export default function Home() {
                   padding: 0,
                   fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                   fontWeight: 500,
-                  fontSize: isMobile ? (isLargeMobile ? 15 : 13) : 15,
+                  fontSize: isMobile ? (isLargeMobile ? 15 : 13) : (isTablet ? 16 : 15),
                   cursor: 'pointer',
                   boxShadow: 'none',
                   transition: 'color 0.18s',
@@ -144,7 +158,7 @@ export default function Home() {
         {/* Main content ends here. Add a clear separation before the scroll feature section. */}
       </div>
       {/* Separate page section for scroll feature section */}
-      <div style={{ width: '100%', marginTop: isMobile ? -300 : -100 }}>
+      <div style={{ width: '100%', marginTop: isMobile ? -300 : (isTablet ? -50 : -100) }}>
         <ScrollFeatureSection />
       </div>
       <ZerotrailFooter />
@@ -154,20 +168,7 @@ export default function Home() {
 
 // Scroll-based Feature Section extracted as its own component
 function ScrollFeatureSection() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isLargeMobile, setIsLargeMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      const width = window.innerWidth;
-      setIsMobile(width <= 768);
-      setIsLargeMobile(width > 390 && width <= 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const { isMobile, isLargeMobile, isTablet } = useViewport();
 
   const features = [
     {
@@ -214,7 +215,7 @@ function ScrollFeatureSection() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '0px 0 64px 0',
+        padding: isTablet ? '40px 0 80px 0' : '0px 0 64px 0',
         background: '#08090A',
         position: 'relative',
       }}
@@ -222,7 +223,7 @@ function ScrollFeatureSection() {
       <div style={{
         position: 'relative',
         width: '100%',
-        maxWidth: 900,
+        maxWidth: isTablet ? 1000 : 900,
         margin: '0 auto',
         display: 'flex',
         flexDirection: 'column',
@@ -251,7 +252,7 @@ function ScrollFeatureSection() {
                 flexDirection: isLeft ? 'row' : 'row-reverse',
                 alignItems: 'center',
                 width: '100%',
-                margin: i === 0 ? (isMobile ? (isLargeMobile ? '0 0 48px 0' : '0 0 40px 0') : '0 0 80px 0') : (isMobile ? (isLargeMobile ? '48px 0' : '40px 0') : '80px 0'),
+                margin: i === 0 ? (isMobile ? (isLargeMobile ? '0 0 48px 0' : '0 0 40px 0') : (isTablet ? '0 0 100px 0' : '0 0 80px 0')) : (isMobile ? (isLargeMobile ? '48px 0' : '40px 0') : (isTablet ? '100px 0' : '80px 0')),
                 position: 'relative',
                 zIndex: 1,
               }}
@@ -264,13 +265,13 @@ function ScrollFeatureSection() {
                 alignItems: isLeft ? 'flex-end' : 'flex-start',
                 justifyContent: 'center',
                 textAlign: isLeft ? 'right' : 'left',
-                paddingRight: isLeft ? (isMobile ? (isLargeMobile ? 24 : 20) : 40) : 0,
-                paddingLeft: isLeft ? 0 : (isMobile ? (isLargeMobile ? 24 : 20) : 40),
+                paddingRight: isLeft ? (isMobile ? (isLargeMobile ? 24 : 20) : (isTablet ? 50 : 40)) : 0,
+                paddingLeft: isLeft ? 0 : (isMobile ? (isLargeMobile ? 24 : 20) : (isTablet ? 50 : 40)),
               }}>
                 <div style={{
                   fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                   fontWeight: 400,
-                  fontSize: isMobile ? (isLargeMobile ? 14 : 13) : 15,
+                  fontSize: isMobile ? (isLargeMobile ? 14 : 13) : (isTablet ? 16 : 15),
                   color: isActive ? '#fff' : '#B5B6B6',
                   marginBottom: 6,
                   opacity: 0.9,
@@ -279,10 +280,10 @@ function ScrollFeatureSection() {
                 <div style={{
                   fontFamily: '"IBM Plex Sans Condensed", sans-serif',
                   fontWeight: 500,
-                  fontSize: isMobile ? (isLargeMobile ? 16 : 14) : 16,
+                  fontSize: isMobile ? (isLargeMobile ? 16 : 14) : (isTablet ? 18 : 16),
                   color: isActive ? '#fff' : '#B5B6B6',
                   opacity: 1,
-                  maxWidth: isMobile ? (isLargeMobile ? 300 : 250) : 320,
+                  maxWidth: isMobile ? (isLargeMobile ? 300 : 250) : (isTablet ? 400 : 320),
                   transition: 'color 0.3s',
                 }}>{f.title}</div>
               </div>
@@ -298,49 +299,36 @@ function ScrollFeatureSection() {
 
 // Footer copied from zerotrail page
 function ZerotrailFooter() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isLargeMobile, setIsLargeMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      const width = window.innerWidth;
-      setIsMobile(width <= 768);
-      setIsLargeMobile(width > 390 && width <= 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const { isMobile, isLargeMobile, isTablet } = useViewport();
 
   return (
     <footer style={{
       textAlign: 'center',
-      padding: isMobile ? (isLargeMobile ? '100px 0 80px 0' : '80px 0 60px 0') : '32px 0 16px 0',
+      padding: isMobile ? (isLargeMobile ? '100px 0 80px 0' : '80px 0 60px 0') : (isTablet ? '80px 0 60px 0' : '32px 0 16px 0'),
       color: '#6b7280',
       fontSize: '0.92rem',
       fontWeight: 400,
       background: '#08090A',
-      marginTop: isMobile ? (isLargeMobile ? '80px' : '60px') : '32px',
-      minHeight: isMobile ? (isLargeMobile ? '240px' : '200px') : 'auto',
+      marginTop: isMobile ? (isLargeMobile ? '80px' : '60px') : (isTablet ? '80px' : '32px'),
+      minHeight: isMobile ? (isLargeMobile ? '240px' : '200px') : (isTablet ? '220px' : 'auto'),
     }}>
       {/* Large Brand Text */}
               <div style={{
           textAlign: 'center',
           position: 'relative',
-          height: isMobile ? (isLargeMobile ? '140px' : '120px') : '120px',
+          height: isMobile ? (isLargeMobile ? '140px' : '120px') : (isTablet ? '140px' : '120px'),
           overflow: 'hidden'
         }}>
         <h2 style={{
-          fontSize: isMobile ? (isLargeMobile ? '4rem' : '3rem') : '8rem',
+          fontSize: isMobile ? (isLargeMobile ? '4rem' : '3rem') : (isTablet ? '6rem' : '8rem'),
           fontWeight: '900',
-          color: '#1A1B1E',
+          color: isTablet ? '#2A2B2E' : '#1A1B1E',
           margin: 0,
           lineHeight: '1',
           letterSpacing: '-0.05em',
           userSelect: 'none',
           position: 'relative',
-          top: isMobile ? (isLargeMobile ? '15px' : '10px') : '20px',
+          top: isMobile ? (isLargeMobile ? '15px' : '10px') : (isTablet ? '15px' : '20px'),
           opacity: '1'
         }}>
           zerotrail
@@ -351,7 +339,7 @@ function ZerotrailFooter() {
           bottom: 0,
           left: 0,
           right: 0,
-          height: isMobile ? (isLargeMobile ? '30px' : '20px') : '40px',
+          height: isMobile ? (isLargeMobile ? '30px' : '20px') : (isTablet ? '35px' : '40px'),
           background: 'linear-gradient(to bottom, transparent 0%, #08090A 100%)',
           pointerEvents: 'none'
         }}></div>
