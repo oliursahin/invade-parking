@@ -84,18 +84,25 @@ export default function ZerotrailPage() {
           display: 'flex',
           alignItems: 'center'
         }}>
-          <button style={{
-            backgroundColor: '#101214',
-            color: '#ffffff',
-            border: '1px solid #374151',
-            borderRadius: '8px',
-            padding: isMobile ? '6px 12px' : '8px 16px',
-            fontSize: isMobile ? '0.8rem' : '0.875rem',
-            fontWeight: '500',
-            cursor: 'pointer'
-          }}>
+          <a
+            href="https://app.zerotrail.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              backgroundColor: '#101214',
+              color: '#ffffff',
+              border: '1px solid #374151',
+              borderRadius: '8px',
+              padding: isMobile ? '6px 12px' : '8px 16px',
+              fontSize: isMobile ? '0.8rem' : '0.875rem',
+              fontWeight: '500',
+              cursor: 'pointer',
+              textDecoration: 'none',
+              display: 'inline-block'
+            }}
+          >
             Login
-          </button>
+          </a>
         </div>
       </nav>
 
@@ -166,45 +173,55 @@ zerotrail detects, analyzes, and suggests mitigations for vulnerabilities at bot
           alignItems: 'center',
           marginBottom: isMobile ? '20px' : '32px'
         }}>
-          <button style={{
-            backgroundColor: '#ffffff',
-            color: '#000000',
-            border: 'none',
-            borderRadius: '12px',
-            padding: isMobile ? '10px 20px' : '12px 24px',
-            fontSize: isMobile ? '0.8rem' : '0.875rem',
-            fontWeight: '600',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            transition: 'all 0.2s ease'
-          }}>
+          <a
+            href="https://app.zerotrail.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              backgroundColor: '#ffffff',
+              color: '#000000',
+              border: 'none',
+              borderRadius: '12px',
+              padding: isMobile ? '10px 20px' : '12px 24px',
+              fontSize: isMobile ? '0.8rem' : '0.875rem',
+              fontWeight: '600',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'all 0.2s ease',
+              textDecoration: 'none'
+            }}
+          >
             Connect with Github
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2">
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
             </svg>
-          </button>
+          </a>
           
-          <button style={{
-            backgroundColor: 'transparent',
-            color: '#9ca3af',
-            border: '1px solid #333333',
-            borderRadius: '12px',
-            padding: isMobile ? '10px 20px' : '12px 24px',
-            fontSize: isMobile ? '0.8rem' : '0.875rem',
-            fontWeight: '600',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            transition: 'all 0.2s ease'
-          }}>
+          <a
+            href="https://cal.com/zerotrail"
+            style={{
+              backgroundColor: 'transparent',
+              color: '#9ca3af',
+              border: '1px solid #333333',
+              borderRadius: '12px',
+              padding: isMobile ? '10px 20px' : '12px 24px',
+              fontSize: isMobile ? '0.8rem' : '0.875rem',
+              fontWeight: '600',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'all 0.2s ease',
+              textDecoration: 'none'
+            }}
+          >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
-            Call Founder
-          </button>
+            talk to founder
+          </a>
         </div>
 
         {/* Free Trial Text */}
@@ -1774,21 +1791,29 @@ zerotrail detects, analyzes, and suggests mitigations for vulnerabilities at bot
             </div>
 
             {/* CTA Button */}
-            <button style={{
-              backgroundColor: '#ffffff',
-              color: '#000000',
-              border: 'none',
-              borderRadius: '12px',
-              padding: '14px 32px',
-              fontSize: '0.875rem',
-              fontWeight: '600',
-              cursor: 'pointer',
-              width: '100%',
-              marginBottom: '32px',
-              transition: 'all 0.2s ease'
-            }}>
+            <a
+              href="https://app.zerotrail.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                backgroundColor: '#ffffff',
+                color: '#000000',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '14px 32px',
+                fontSize: '0.875rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                width: '100%',
+                marginBottom: '32px',
+                transition: 'all 0.2s ease',
+                textDecoration: 'none',
+                display: 'block',
+                textAlign: 'center'
+              }}
+            >
               Try Now
-            </button>
+            </a>
 
             <div style={{
               marginBottom: '32px'
@@ -1932,21 +1957,27 @@ zerotrail detects, analyzes, and suggests mitigations for vulnerabilities at bot
             </div>
 
             {/* CTA Button */}
-            <button style={{
-              backgroundColor: 'transparent',
-              color: '#ffffff',
-              border: '1px solid #333333',
-              borderRadius: '12px',
-              padding: '14px 32px',
-              fontSize: '0.875rem',
-              fontWeight: '600',
-              cursor: 'pointer',
-              width: '100%',
-              marginBottom: '32px',
-              transition: 'all 0.2s ease'
-            }}>
+            <a
+              href="imessage://oliursahin@gmail.com"
+              style={{
+                backgroundColor: 'transparent',
+                color: '#ffffff',
+                border: '1px solid #333333',
+                borderRadius: '12px',
+                padding: '14px 32px',
+                fontSize: '0.875rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                width: '100%',
+                marginBottom: '32px',
+                transition: 'all 0.2s ease',
+                textDecoration: 'none',
+                display: 'block',
+                textAlign: 'center'
+              }}
+            >
               Contact us
-            </button>
+            </a>
 
             <div style={{
               marginBottom: '32px'
